@@ -11,11 +11,12 @@ class App extends Component {
     this.handleTaskInputChange = this.handleTaskInputChange.bind(this);
   }
 
-  handleTaskInputChange(newTask) {
-    this.setState({ task: newTask });
+  handleTaskInputChange(e) {
+    this.setState({ task: e.target.value });
   }
 
-  handleAddTask() {
+  handleAddTask(e) {
+    e.preventDefault();
     this.setState({
       tasks: [...this.state.tasks, this.state.task],
       task: "",

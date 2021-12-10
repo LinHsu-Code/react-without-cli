@@ -1,10 +1,10 @@
 //import React from "react";
 const AddTask = (props) => {
   const handleTaskInputChange = (e) => {
-    props.onTaskInputChange(e.target.value);
+    props.onTaskInputChange(e);
   };
-  const handleAddTask = () => {
-    props.onAddTask();
+  const handleAddTask = (e) => {
+    props.onAddTask(e);
   };
   return (
     <div className="add-task-wrapper">
