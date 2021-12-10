@@ -6,21 +6,30 @@ import TaskList from "./components/TaskList";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { tasks: [] };
+    this.state = { tasks: [], task: "" };
     this.handleAddTask = this.handleAddTask.bind(this);
+    this.handleTaskInputChange = this.handleTaskInputChange.bind(this);
   }
 
-  handleAddTask(newTask) {
-    const tasks = [...this.state.tasks, newTask];
+  handleTaskInputChange(newTask) {
+    this.setState({ task: newTask });
+  }
+
+  handleAddTask() {
     this.setState({
-      tasks: tasks,
+      tasks: [...this.state.tasks, this.state.task],
+      task: "",
     });
   }
 
   render() {
     return (
       <div className="task-container">
-        <AddTask onAddTask={this.handleAddTask} />
+        <AddTask
+          onTaskInputChange={this.handleTaskInputChange}
+          onAddTask={this.handleAddTask}
+          inputText={this.state.task}
+        />
         <TaskList tasks={this.state.tasks} />
       </div>
     );
